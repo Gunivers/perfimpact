@@ -1,0 +1,72 @@
+package fr.az.perfimpact;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Timer;
+
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import fr.az.perfimpact.commands.PerfImpactCommandExecutor;
+import fr.az.perfimpact.util.TimerTask;
+
+public class Main extends JavaPlugin {
+
+	public HashMap<String,ArrayList<Long>> timeImpact = new HashMap<String,ArrayList<Long>>();
+	public HashMap<String,Long> timeCalled = new HashMap<String,Long>();
+	
+	public HashMap<String,Timer> timing = new HashMap<String,Timer>();
+	public HashMap<String,TimerTask> timer = new HashMap<String,TimerTask>();
+	
+	public FileConfiguration config;
+	
+	private boolean isCapturing = false;
+	
+	@Override
+	public void onLoad() {
+		saveDefaultConfig();
+		getCommand("perfimpact").setExecutor(new PerfImpactCommandExecutor(this));
+		
+		if (config.getString("PathList:") != null) {
+			
+			for(String path : config.getString("PathList","").split(":")) {
+				timeCalled.put(path, config.getLong("CallCount."+ path,0L));
+				
+				ArrayList<Long> exeTime = new ArrayList<Long>();
+				for (long i = 0; i < timeCalled.get(path); i++) {
+					exeTime.add(config.getLong("Execution_Time." + path +"."+ i, 0L));
+				}
+				
+				timeImpact.put(path, exeTime);
+			}
+		}
+		
+		System.out.println("§6PerfImpact successfully loaded ^^");
+	}
+	
+	@Override
+	public void onDisable() {
+		String pathList = "";
+		for (String path : timeImpact.keySet()) {
+			pathList += path;
+			pathList += ":";
+			
+			for (int i = 1; i < timeImpact.getOrDefault(path,new ArrayList<Long>()).size(); i++) {
+				config.set("Execution_Time."+ path +"."+ i, timeImpact.get(path).get(i));
+			}
+
+			config.set("CallCount."+ path,timeCalled.getOrDefault(path,0L));
+		}
+		
+		config.set("PathList", pathList);
+	}
+	
+	public boolean setCapturing(boolean isCapturing) {
+		this.isCapturing = isCapturing;
+		return isCapturing;
+	}
+	
+	public boolean isCapturing() {
+		return isCapturing;
+	}
+}

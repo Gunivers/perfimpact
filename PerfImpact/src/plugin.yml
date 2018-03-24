@@ -1,0 +1,41 @@
+name: PerfImpact
+author: AZ
+main: fr.az.perfimpact.Main
+version: 2.0
+description: '§6This plug-in allow you to know the impact on performance '
+
+commands:
+    perfimpact:
+        description: '§6This command allow you to get the impact on the performances of your functions. Type /perfimpact help for more'
+        permission: perfimpact.use
+
+permissions:
+    perfimpact.use:
+        default: true
+        description: 'If you didn't understood it, you really are a dumbass'
+
+    perfimpact.start:
+        default: true
+        description: 'Start the impact mesurement'
+
+    perfimpact.stop:
+        default: true
+        description: 'Stop the impact mesurement'
+
+    perfimpact.help:
+        default: true
+        description: 'Get some help, are you a dumbass ?'
+
+    perfimpact.resume:
+        default: true
+        description: 'Get the results of our perfects mesurements !'
+
+    perfimpact.*:
+        default: true
+        description: 'This is the godly permission !!!'
+        children:
+          perfimpact.use: true
+          perfimpact.start: true
+          perfimpact.stop: true
+          perfimpact.help: true
+          perfimpact.resume: true
