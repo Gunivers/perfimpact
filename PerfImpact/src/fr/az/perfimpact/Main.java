@@ -25,6 +25,9 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		saveDefaultConfig();
+		
+		if (getCommand("perfimpact") == null) System.out.println("§6 perfimpact does not exist :/");
+		
 		getCommand("perfimpact").setExecutor(new PerfImpactCommandExecutor(this));
 		
 		if (config.get("PathList:") != null) {
