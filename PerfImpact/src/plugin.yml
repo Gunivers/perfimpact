@@ -2,11 +2,11 @@ name: PerfImpact
 author: AZ
 main: fr.az.perfimpact.Main
 version: 2.0
-description: '§6This plug-in allow you to know the impact on performance '
+description: 'This plug-in allow you to know the systems impact on performance'
 
 commands:
     perfimpact:
-        description: '§6This command allow you to get the impact on the performances of your functions. Type /perfimpact help for more'
+        description: 'This command allow you to get the impact on the performances of your systems. Type /perfimpact help for more'
         permission: perfimpact.use
 
 permissions:
@@ -34,8 +34,8 @@ permissions:
         default: true
         description: 'This is the godly permission !!!'
         children:
-          perfimpact.use: true
-          perfimpact.start: true
-          perfimpact.stop: true
-          perfimpact.help: true
-          perfimpact.resume: true
+            perfimpact.use: true
+            perfimpact.start: true
+            perfimpact.stop: true
+            perfimpact.help: true
+            perfimpact.resume: true
