@@ -2,17 +2,17 @@ name: PerfImpact
 author: AZ
 main: fr.az.perfimpact.Main
 version: 2.0
-description: 'This plug-in allow you to know the systems impact on performance'
+description: '§6This plug-in allow you to know the systems impact on performance'
 
 commands:
     perfimpact:
-        description: 'This command allow you to get the impact on the performances of your systems. Type /perfimpact help for more'
+        description: '§6This command allow you to get the impact on the performances of your systems. Type /perfimpact help for more'
         permission: perfimpact.use
 
 permissions:
     perfimpact.use:
         default: true
-        description: 'If you didn't understood it, you really are a dumbass'
+        description: 'If you didn\'t understood it, you really are a dumbass'
 
     perfimpact.start:
         default: true
@@ -24,7 +24,7 @@ permissions:
 
     perfimpact.help:
         default: true
-        description: 'Get some help, are you a dumbass ?'
+        description: 'Getting some help, did you already forget the uses ?'
 
     perfimpact.resume:
         default: true
