@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
 
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,12 +22,16 @@ public class Main extends JavaPlugin {
 	public FileConfiguration config;
 	
 	private boolean isCapturing = false;
+	private ConsoleCommandSender console;
 	
 	@Override
 	public void onLoad() {
 		saveDefaultConfig();
 		
-		if (getCommand("perfimpact") == null) System.out.println("§6 perfimpact does not exist :/");
+		config = getConfig();
+		console = getServer().getConsoleSender();
+		
+		if (getCommand("perfimpact") == null) console.sendMessage("§6Perfimpact command does not §4EXIST");
 		
 		getCommand("perfimpact").setExecutor(new PerfImpactCommandExecutor(this));
 		

@@ -5,37 +5,39 @@ version: 2.0
 description: '§6This plug-in allow you to know the systems impact on performance'
 
 commands:
-    perfimpact:
-        description: '§6This command allow you to get the impact on the performances of your systems. Type /perfimpact help for more'
-        permission: perfimpact.use
+  perfimpact:
+    description: Get the systems performances. Type /perfimpact help for more
+    permission: perfimpact.use
+    usage: /perfimpact <start|stop|capture|help> ...
+    aliases: [perfImpact, pf, PerfImpact]
 
 permissions:
-    perfimpact.use:
-        default: true
-        description: 'If you didn`t understood it, you really are a fool'
+  perfimpact.use:
+    default: true
+    description: 'If you didn`t understood it, you really are a fool'
 
-    perfimpact.start:
-        default: true
-        description: 'Start the impact mesurement'
+  perfimpact.start:
+    default: true
+    description: 'Start the impact mesurement'
 
-    perfimpact.stop:
-        default: true
-        description: 'Stop the impact mesurement'
+  perfimpact.stop:
+    default: true
+    description: 'Stop the impact mesurement'
 
-    perfimpact.help:
-        default: true
-        description: 'Getting some help, did you already forget the uses ?'
+  perfimpact.help:
+    default: true
+    description: 'Getting some help, did you already forget the uses ?'
 
-    perfimpact.resume:
-        default: true
-        description: 'Get the results of our perfects mesurements !'
+  perfimpact.resume:
+    default: true
+    description: 'Get the results of our perfects mesurements !'
 
-    perfimpact.*:
-        default: true
-        description: 'This is the godly permission !!!'
-        children:
-            perfimpact.use: true
-            perfimpact.start: true
-            perfimpact.stop: true
-            perfimpact.help: true
-            perfimpact.resume: true
+  perfimpact.*:
+    default: true
+    description: 'This is the godly permission !!!'
+    children:
+      perfimpact.use: true
+      perfimpact.start: true
+      perfimpact.stop: true
+      perfimpact.help: true
+      perfimpact.resume: true
