@@ -27,7 +27,7 @@ public class Main extends JavaPlugin {
 		saveDefaultConfig();
 		getCommand("perfimpact").setExecutor(new PerfImpactCommandExecutor(this));
 		
-		if (config.getString("PathList:") != null) {
+		if (config.get("PathList:") != null) {
 			
 			for(String path : config.getString("PathList","").split(":")) {
 				timeCalled.put(path, config.getLong("CallCount."+ path,0L));
@@ -41,7 +41,7 @@ public class Main extends JavaPlugin {
 			}
 		}
 		
-		System.out.println("§6PerfImpact successfully loaded ^^");
+		System.out.println("ï¿½6PerfImpact successfully loaded ^^");
 	}
 	
 	@Override
