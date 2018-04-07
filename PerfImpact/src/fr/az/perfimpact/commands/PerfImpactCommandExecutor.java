@@ -37,7 +37,7 @@ public class PerfImpactCommandExecutor implements CommandExecutor {
 		
 		if (args[0] == "capture") {
 			if (args.length == 1) {
-				sender.sendMessage("ง6Capture enabled: ง2" + main.isCapturing());
+				sender.sendMessage("ยง6Capture enabled: ยง2" + main.isCapturing());
 				return true;
 			}
 			
@@ -65,7 +65,7 @@ public class PerfImpactCommandExecutor implements CommandExecutor {
 				
 				main.timing.get(path).schedule(main.timer.get(path), 1L);
 				
-				sender.sendMessage("ง6Timer successfully started");
+				sender.sendMessage("ยง6Timer successfully started");
 				return true;
 		}
 		
@@ -87,7 +87,7 @@ public class PerfImpactCommandExecutor implements CommandExecutor {
 			main.timing.remove(path);
 			main.timer.remove(path);
 			
-			sender.sendMessage("ง6The function "+ path +" was executed in ง2"+ exeTime +"s");
+			sender.sendMessage("ยง6The function "+ path +" was executed in ยง2"+ exeTime +"s");
 			return true;
 		}
 		
@@ -165,11 +165,11 @@ public class PerfImpactCommandExecutor implements CommandExecutor {
 				long callCount = main.timeCalled.get(path);
 				ArrayList<Long> exeTime = main.timeImpact.get(path);
 				
-				sender.sendMessage("ง5Function "+ path +"\nง6Mean of execution time: ง4"+ mean + "ง6; Total Calls: ง4" + callCount);
-				sender.sendMessage("ง6Execution Times: ");
+				sender.sendMessage("ยง5Function "+ path +"\nยง6Mean of execution time: ยง4"+ mean + "ยง6; Total Calls: ยง4" + callCount);
+				sender.sendMessage("ยง6Execution Times: ");
 				
 				for (long i : exeTime) {
-					sender.sendMessage("ง4"+ i +"ง6; ");
+					sender.sendMessage("ยง4"+ i +"ยง6; ");
 				}
 				
 				main.setCapturing(isCapturing);
@@ -178,7 +178,7 @@ public class PerfImpactCommandExecutor implements CommandExecutor {
 		}
 		
 		if (args[0] == "help") {
-			sender.sendMessage("ง2The help of 'ง6"+path+"ง2' is coming soon !");
+			sender.sendMessage("ยง2The help of 'ยง6"+path+"ยง2' is coming soon !");
 			return true;
 		}
 	
