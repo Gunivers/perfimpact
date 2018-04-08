@@ -9,6 +9,7 @@ import fr.az.perfimpact.util.TimerTask;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.ChatColor;
 
 import fr.az.perfimpact.Main;
 import fr.az.perfimpact.util.Node;
@@ -37,7 +38,7 @@ public class PerfImpactCommandExecutor implements CommandExecutor {
 		
 			if (args[0] == "capture") {
 				if (args.length == 1) {
-					sender.sendMessage("§6Capture enabled: §2" + main.isCapturing());
+					sender.sendMessage(ChatColor.GOLD + "Capture enabled: " + ChatColor.DARK_GREEN + main.isCapturing());
 					return true;
 				}
 				
@@ -65,7 +66,7 @@ public class PerfImpactCommandExecutor implements CommandExecutor {
 				
 				main.timing.get(path).schedule(main.timer.get(path), 1L);
 				
-				sender.sendMessage("§6Timer successfully started");
+				sender.sendMessage(ChatColor.GOLD + "Timer successfully started");
 				return true;
 			}
 		
@@ -87,7 +88,7 @@ public class PerfImpactCommandExecutor implements CommandExecutor {
 				main.timing.remove(path);
 				main.timer.remove(path);
 			
-				sender.sendMessage("§6The function "+ path +" was executed in §2"+ exeTime +"s");
+				sender.sendMessage(ChatColor.GOLD + "The function "+ path +" was executed in " + ChatColor.DARK_GREEN + exeTime +"s");
 				return true;
 			}
 		
@@ -165,11 +166,11 @@ public class PerfImpactCommandExecutor implements CommandExecutor {
 					long callCount = main.timeCalled.get(path);
 					ArrayList<Long> exeTime = main.timeImpact.get(path);
 					
-					sender.sendMessage("§5Function "+ path +"\n§6Mean of execution time: §4"+ mean + "§6; Total Calls: §4" + callCount);
-					sender.sendMessage("§6Execution Times: ");
+					sender.sendMessage(ChatColor.DARK_PURPLE + "Function "+ path +"\n" + ChatColor.GOLD + "Mean of execution time: "+ ChatColor.DARK_RED + mean + ChatColor.GOLD + "; Total Calls: " + ChatColor.DARK_RED + callCount);
+					sender.sendMessage(ChatColor.GOLD + "Execution Times: ");
 				
 					for (long i : exeTime) {
-						sender.sendMessage("§4"+ i +"§6; ");
+						sender.sendMessage("" + ChatColor.DARK_RED + i + ChatColor.GOLD + "; ");
 					}
 				
 					main.setCapturing(isCapturing);
@@ -178,7 +179,7 @@ public class PerfImpactCommandExecutor implements CommandExecutor {
 			}
 		
 			if (args[0] == "help") {
-				sender.sendMessage("§2The help of '§6"+path+"§2' is coming soon !");
+				sender.sendMessage(ChatColor.DARK_GREEN + "The help of '" + ChatColor.GOLD + path + ChatColor.DARK_GREEN +"' is coming soon !");
 			return true;
 			}
 		}
