@@ -24,13 +24,16 @@ public class Main extends JavaPlugin {
 	
 	private boolean isCapturing = false;
 	private ConsoleCommandSender console;
-	
+
 	@Override
-	public void onLoad() {
+	public void onEnable()
+	{
 		saveDefaultConfig();
 		
 		config = getConfig();
 		console = getServer().getConsoleSender();
+		
+		getCommand("perfimpact").setExecutor(new PerfImpactCommandExecutor(this));
 		
 		if (config.get("PathList:") != null) {
 			
@@ -46,15 +49,7 @@ public class Main extends JavaPlugin {
 			}
 		}
 		
-		System.out.println(ChatColor.GOLD + "PerfImpact successfully loaded ^^");
-	}
-
-	@Override
-	public void onEnable()
-	{
-		if (getCommand("perfimpact") == null) console.sendMessage(ChatColor.GOLD + "Perfimpact command does not" +  ChatColor.DARK_RED + " EXIST");
-
-		getCommand("perfimpact").setExecutor(new PerfImpactCommandExecutor(this));
+		console.sendMessage(ChatColor.GOLD + "PerfImpact successfully loaded ^^");
 	}
 
 	@Override
