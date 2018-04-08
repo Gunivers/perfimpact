@@ -1,24 +1,24 @@
 package fr.az.perfimpact;
 
+import fr.az.perfimpact.commands.PerfImpactCommandExecutor;
+import fr.az.perfimpact.util.TimerTask;
+
+import org.bukkit.ChatColor;
+import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
 
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.ChatColor;
-
-import fr.az.perfimpact.commands.PerfImpactCommandExecutor;
-import fr.az.perfimpact.util.TimerTask;
-
 public class Main extends JavaPlugin {
 
-	public HashMap<String,ArrayList<Long>> timeImpact = new HashMap<String,ArrayList<Long>>();
-	public HashMap<String,Long> timeCalled = new HashMap<String,Long>();
+	public HashMap<String,ArrayList<Long>> timeImpact = new HashMap<>();
+	public HashMap<String,Long> timeCalled = new HashMap<>();
 	
-	public HashMap<String,Timer> timing = new HashMap<String,Timer>();
-	public HashMap<String,TimerTask> timer = new HashMap<String,TimerTask>();
+	public HashMap<String,Timer> timing = new HashMap<>();
+	public HashMap<String,TimerTask> timer = new HashMap<>();
 	
 	public FileConfiguration config;
 	
@@ -32,16 +32,12 @@ public class Main extends JavaPlugin {
 		config = getConfig();
 		console = getServer().getConsoleSender();
 		
-		if (getCommand("perfimpact") == null) console.sendMessage(ChatColor.GOLD + "Perfimpact command does not" +  ChatColor.DARK_RED + " EXIST");
-		
-		getCommand("perfimpact").setExecutor(new PerfImpactCommandExecutor(this));
-		
 		if (config.get("PathList:") != null) {
 			
 			for(String path : config.getString("PathList","").split(":")) {
 				timeCalled.put(path, config.getLong("CallCount."+ path,0L));
 				
-				ArrayList<Long> exeTime = new ArrayList<Long>();
+				ArrayList<Long> exeTime = new ArrayList<>();
 				for (long i = 0; i < timeCalled.get(path); i++) {
 					exeTime.add(config.getLong("Execution_Time." + path +"."+ i, 0L));
 				}
@@ -52,7 +48,15 @@ public class Main extends JavaPlugin {
 		
 		System.out.println(ChatColor.GOLD + "PerfImpact successfully loaded ^^");
 	}
-	
+
+	@Override
+	public void onEnable()
+	{
+		if (getCommand("perfimpact") == null) console.sendMessage(ChatColor.GOLD + "Perfimpact command does not" +  ChatColor.DARK_RED + " EXIST");
+
+		getCommand("perfimpact").setExecutor(new PerfImpactCommandExecutor(this));
+	}
+
 	@Override
 	public void onDisable() {
 		String pathList = "";
@@ -60,7 +64,7 @@ public class Main extends JavaPlugin {
 			pathList += path;
 			pathList += ":";
 			
-			for (int i = 1; i < timeImpact.getOrDefault(path,new ArrayList<Long>()).size(); i++) {
+			for (int i = 1; i < timeImpact.getOrDefault(path,new ArrayList<>()).size(); i++) {
 				config.set("Execution_Time."+ path +"."+ i, timeImpact.get(path).get(i));
 			}
 
