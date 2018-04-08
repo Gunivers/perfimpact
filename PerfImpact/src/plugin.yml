@@ -2,14 +2,11 @@ name: PerfImpact
 author: AZ
 main: fr.az.perfimpact.Main
 version: 2.0
-description: '§6This plug-in allow you to know the systems impact on performance'
-
+description: 'This plug-in allow you to know the systems impact on performance'
 commands:
   perfimpact:
     description: Get the systems performances. Type /perfimpact help for more
-    permission: perfimpact.use
     usage: /perfimpact <start|stop|capture|help> ...
-    aliases: [perfImpact, pf, PerfImpact]
 
 permissions:
   perfimpact.use:
