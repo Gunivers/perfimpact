@@ -7,6 +7,7 @@ import java.util.Timer;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.ChatColor;
 
 import fr.az.perfimpact.commands.PerfImpactCommandExecutor;
 import fr.az.perfimpact.util.TimerTask;
@@ -31,7 +32,7 @@ public class Main extends JavaPlugin {
 		config = getConfig();
 		console = getServer().getConsoleSender();
 		
-		if (getCommand("perfimpact") == null) console.sendMessage("§6Perfimpact command does not §4EXIST");
+		if (getCommand("perfimpact") == null) console.sendMessage(ChatColor.GOLD + "Perfimpact command does not" +  ChatColor.DARK_RED + " EXIST");
 		
 		getCommand("perfimpact").setExecutor(new PerfImpactCommandExecutor(this));
 		
@@ -49,7 +50,7 @@ public class Main extends JavaPlugin {
 			}
 		}
 		
-		System.out.println("�6PerfImpact successfully loaded ^^");
+		System.out.println(ChatColor.GOLD + "PerfImpact successfully loaded ^^");
 	}
 	
 	@Override
