@@ -11,7 +11,7 @@ commands:
 permissions:
   perfimpact.use:
     default: true
-    description: 'If you didn`t understood it, you really are a fool'
+    description: 'If you did not understood it, you really are a fool'
 
   perfimpact.start:
     default: true
