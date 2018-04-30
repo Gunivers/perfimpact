@@ -1,15 +1,14 @@
 package fr.az.perfimpact.util;
 
-public class TimerTask extends java.util.TimerTask {
+public class TimerTask {
 	
-	private long time = 0;
+	private long time = System.currentTimeMillis();
 	
-	@Override
-	public void run() {
-		time += 1;
+	public TimerTask() {
+		this.time = System.currentTimeMillis();
 	}
 	
-	public long getTime() {
-		return time;
+	public double getTime() {
+		return (System.currentTimeMillis() - time) / 1000;
 	}
 }

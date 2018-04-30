@@ -5,38 +5,38 @@ import java.util.HashMap;
 
 public class Node extends Tree {
 
-	private long executionTime = 0L;
-	private float impact = 0.f;
+	private double executionTime = 0d;
+	private double impact = 0d;
 	private long calls = 0L;
 	
 	private Node father;
-	private HashMap<Node,Float> childImpact = new HashMap<Node,Float>();
+	private HashMap<Node,Double> childImpact = new HashMap<Node,Double>();
 	
 	public Node(String path, Node ... children) {
 		super(path, children);
 		for (Node child : children) {
-			this.childImpact.put(child, 0.f);
+			this.childImpact.put(child, 0d);
 		}
 	}
 
-	public long getExecutionTime() {
+	public double getExecutionTime() {
 		return executionTime;
 	}
 
-	public void setExecutionTime(long executionTime) {
+	public void setExecutionTime(double executionTime) {
 		this.executionTime = executionTime;
 	}
 
-	public float getImpact() {
+	public double getImpact() {
 		return impact;
 	}
 
-	public void setImpact(float impact) {
+	public void setImpact(double impact) {
 		this.impact = impact;
 		father.setImpact(this, impact);
 	}
 
-	private void setImpact(Node child, float impact) {
+	private void setImpact(Node child, double impact) {
 		if (childImpact.containsKey(child)) {
 			childImpact.put(child, impact);
 			this.updateImpact();
@@ -44,7 +44,7 @@ public class Node extends Tree {
 	}
 
 	private void updateImpact() {
-		for (float impact : childImpact.values()) {
+		for (double impact : childImpact.values()) {
 			this.impact += impact;
 		}
 		this.impact /= childImpact.size();
@@ -60,7 +60,7 @@ public class Node extends Tree {
 	
 	public void addChild(Node child) {
 		super.addChild(child);
-		this.childImpact.put(child, 0.f);
+		this.childImpact.put(child, 0d);
 	}
 
 	@Override

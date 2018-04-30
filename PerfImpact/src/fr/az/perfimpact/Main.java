@@ -10,15 +10,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Timer;
 
 public class Main extends JavaPlugin {
 
-	public HashMap<String,ArrayList<Long>> timeImpact = new HashMap<>();
-	public HashMap<String,Long> timeCalled = new HashMap<>();
+	public HashMap<String,ArrayList<Double>> timeImpact = new HashMap<String,ArrayList<Double>>();
+	public HashMap<String,Long> timeCalled = new HashMap<String,Long>();
 	
-	public HashMap<String,Timer> timing = new HashMap<>();
-	public HashMap<String,TimerTask> timer = new HashMap<>();
+	public HashMap<String,TimerTask> timer = new HashMap<String,TimerTask>();
 	
 	public FileConfiguration config;
 	
@@ -40,9 +38,9 @@ public class Main extends JavaPlugin {
 			for(String path : config.getString("PathList","").split(":")) {
 				timeCalled.put(path, config.getLong("CallCount."+ path,0L));
 				
-				ArrayList<Long> exeTime = new ArrayList<>();
+				ArrayList<Double> exeTime = new ArrayList<Double>();
 				for (long i = 0; i < timeCalled.get(path); i++) {
-					exeTime.add(config.getLong("Execution_Time." + path +"."+ i, 0L));
+					exeTime.add(config.getDouble("Execution_Time." + path +"."+ i, 0L));
 				}
 				
 				timeImpact.put(path, exeTime);
