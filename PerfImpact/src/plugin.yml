@@ -7,6 +7,7 @@ commands:
   perfimpact:
     description: Get the systems performances. Type /perfimpact help for more
     usage: /perfimpact <start|stop|capture|help> ...
+    aliases: [pf,perfImpact,PerfImpact,Perfimpact]
 
 permissions:
   perfimpact.use:
