@@ -35,8 +35,7 @@ public class PerfImpactCommandExecutor implements CommandExecutor {
 				path.append(args[i]);
 			}
 
-			// =================|================= CAPTURE
-			// =================|=================
+			// =================|================= CAPTURE =================|=================
 			if (args[0].equals("capture")) {
 				if (args.length == 1) {
 					sender.sendMessage(
@@ -89,8 +88,7 @@ public class PerfImpactCommandExecutor implements CommandExecutor {
 				return true;
 			}
 
-			// =================|================= RESUME
-			// =================|=================
+			// =================|================= RESUME =================|=================
 			if (args[0].equals("resume")) {
 				boolean isCapturing = main.isCapturing();
 				main.setCapturing(false);
