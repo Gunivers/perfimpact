@@ -1,4 +1,4 @@
-package fr.az.perfimpact.util;
+package fr.az.perfimpact.util.node;
 
 import java.util.ArrayList;
 import java.util.HashMap;
