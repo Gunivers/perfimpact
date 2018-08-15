@@ -7,8 +7,8 @@ import org.bukkit.command.CommandSender;
 
 import fr.az.perfimpact.Main;
 import fr.az.perfimpact.util.ErrorHandler;
-import fr.az.perfimpact.util.node.Node;
 
+@SuppressWarnings("unused")
 public class Pf_start extends ErrorHandler implements CommandExecutor 
 {
 	private Main main;
